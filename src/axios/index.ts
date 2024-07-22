@@ -4,7 +4,6 @@ import axios, {
     AxiosError,
     InternalAxiosRequestConfig
 } from "axios";
-import { error } from "console";
 
 class AxiosHttpClient {
     private axiosInstance: AxiosInstance;
@@ -58,14 +57,6 @@ class AxiosHttpClient {
         config?: InternalAxiosRequestConfig
     ): Promise<T> {
         return this.axiosInstance.get(url, config);
-    }
-
-    public post<T>(
-        url: string,
-        data: T,
-        config?: InternalAxiosRequestConfig
-    ): Promise<T> {
-        return this.axiosInstance.post(url, data, config);
     }
 }
 
