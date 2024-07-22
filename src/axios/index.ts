@@ -11,7 +11,7 @@ class AxiosHttpClient {
 
     constructor(baseUrl: string) {
         this.axiosInstance = axios.create({
-            baseURL: `${process.env.BASE_URL}`,
+            baseURL: baseUrl,
         })
 
         this.initializeRequestInterceptor();
@@ -56,7 +56,7 @@ class AxiosHttpClient {
     public get<T>(
         url: string,
         config?: InternalAxiosRequestConfig
-    ): Promise<AxiosResponse<T>> {
+    ): Promise<T> {
         return this.axiosInstance.get(url, config);
     }
 
@@ -64,7 +64,7 @@ class AxiosHttpClient {
         url: string,
         data: T,
         config?: InternalAxiosRequestConfig
-    ): Promise<AxiosResponse<T>> {
+    ): Promise<T> {
         return this.axiosInstance.post(url, data, config);
     }
 }
